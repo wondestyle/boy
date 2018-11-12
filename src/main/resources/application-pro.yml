@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+boy:
+  cupSize: F
+  age: 25
+  sex: 男
+  name: 张三
+  id: 100
+
+
+
+
+
+
+
+
+

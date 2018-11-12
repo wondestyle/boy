@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>配置Thymeleaf模板</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script th:src="@{jquery/jquery.min.js}" src="../static/jquery/jquery.min.js"></script>
+</head>
+<body>
+<div style="text-align: center;margin:0 auto;width: 1000px; ">
+    <h1>配置Thymeleaf模板</h1>
+    <table width="100%" border="1" cellspacing="1" cellpadding="0">
+    <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>地址</td>
+    </tr>
+    <tr th:each="student : ${list}">
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.age}"></td>
+        <td th:text="${student.address}"></td>
+    </tr>
+</table>
+</div>
+<div>
+    跳转链接地址在这里，已经实现热部署了，哈哈哈
+    <a href="test.html" th:href="@{/test}">测试页面</a>
+</div>
+</body>
+</html>
+

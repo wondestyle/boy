@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{jquery/jquery.min.js}" src="../static/jquery/jquery.min.js"></script>
+    <style type="text/css">
+        #mytable {
+            width: 500px;
+            height: 400px;
+            text-align: center;
+            line-height: 30px;
+            border: solid 1px gray;
+            border-collapse: collapse;
+        }
+
+        #mytable tr th {
+            border: solid 1px gray;
+            border-collapse: collapse;
+        }
+
+        #mytable tr td {
+            line-height: 30px;
+            border: solid 1px gray;
+            border-collapse: collapse;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<button id="test">test</button>
+
+<table id="mytable">
+    <thead>
+    <tr>
+        <th>年龄</th>
+        <th>姓名</th>
+        <th>地址</th>
+    </tr>
+    </thead>
+    <tbody id="content"></tbody>
+</table>
+<script type="text/javascript">
+    $(function () {
+        $('#test').click(function () {
+            $.ajax({
+                type: 'get',
+                url: '/main-test',
+                success: function (res) {
+                    var arr = eval(res);
+                    var arrs = arr.data;
+                    console.log(arrs);
+                    for (var i in arrs) {
+                        var obj = arrs[i];
+                        var objArr = obj.list;
+                        var content = '';
+                        for (var i in objArr) {
+                            var person = objArr[i];
+                            var html = "<tr>";
+                            html += "<td>" + person.age + "</td>";
+                            html += "<td>" + person.name + "</td>";
+                            html += "<td>" + person.address + "</td>";
+                            html += "</tr>";
+                            content += html;
+                        }
+                        $('#content').empty().html(content);
+                    }
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>
